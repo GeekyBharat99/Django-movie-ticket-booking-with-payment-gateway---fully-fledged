@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block body %}
+    <center>
+        <h2 style="padding-top: 15%">Create New Account</h2>
+        <br>
+        <form style="width: 40%;" method="post" action="">
+            {% csrf_token %}
+            {% if error %}<p style="color: red">This Username already Exist.</p>{% endif %}
+            <label>Username:</label>
+            <input type="text" name="un" placeholder="Username" class="form-control" required><br>
+
+
+            <label>Email:</label>
+            <input type="email" name="email" placeholder="Email" class="form-control" required><br>
+
+
+            <label>Password:</label>
+            <input type="password" name="ps" placeholder="Password" class="form-control" required><br>
+
+            <label>Name:</label>
+            <input type="text" name="name" placeholder="Name" class="form-control" required><br>
+
+            <label>Number:</label>
+            <input type="number" name="number" placeholder="Mobile Number" class="form-control" required><br>
+
+
+            <label>Address:</label>
+            <textarea  name="add" placeholder=" Your Complete Address" class="form-control" required></textarea><br>
+
+            <input class="btn btn-info" type="submit" value="Sign Up" >
+
+        </form>
+
+
+    </center>
+{% endblock %}

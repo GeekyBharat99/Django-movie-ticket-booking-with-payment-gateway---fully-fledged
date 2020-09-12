@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block body %}
+    <center>
+        <h2 style="padding-top: 15%">Add Category</h2>
+        <br>
+        <form style="width: 40%;" method="post" action="">
+            {% csrf_token %}
+            {% if error %}<p style="color: red">This Category Already Exist</p>{% endif %}
+            <label>Add Category</label>
+            <input type="text" name="cat" placeholder="Add Category" class="form-control" required><br>
+            <input class="btn btn-info" type="submit" value="Add" >
+
+        </form>
+
+    </center>
+{% endblock %}

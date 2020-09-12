@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block body %}
+    <center>
+        <h2 style="padding-top: 15%">Add New Show Time</h2>
+        <br>
+        <form style="width: 40%;" method="post" action="">
+            {% csrf_token %}
+
+
+            <select name="talkies" required class="form-control">
+                <option value="">-----------Choose Talkies----------</option>
+                {% for i in talk %}
+                    <option value="{{ i.id }}">{{ i.name }}</option>
+                {% endfor %}
+            </select><br><br><br>
+
+            <select name="movie" required class="form-control">
+                <option value="">-----------Choose Movie----------</option>
+                {% for i in movies %}
+                    <option value="{{ i.id }}">{{ i.title }}</option>
+                {% endfor %}
+            </select><br><br><br>
+            <input type="date" class="form-control" name="date" placeholder="Show Date" required><br><br>
+            <input type="text" class="form-control" name="time" placeholder="Show Time" required><br><br>
+            <input type="number" class="form-control" name="rs" placeholder="Fee" required><br><br>
+            <br><br>
+
+
+
+            <input class="btn btn-info" type="submit" value="Add" >
+
+        </form>
+        <br>
+        <br>
+
+    </center>
+{% endblock %}

@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<!-- 
+Template Name: Movie Pro
+Version: 1.0.0
+Author: Webstrot
+
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="zxx">
+<!--[endif]-->
+
+<head>
+    {% load static %}
+	<meta charset="utf-8" />
+	<title>Movie Pro Responsive HTML Template</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+	<meta name="description" content="Movie Pro" />
+	<meta name="keywords" content="Movie Pro" />
+	<meta name="author" content="" />
+	<meta name="MobileOptimized" content="320" />
+	<!--Template style -->
+	<link rel="stylesheet" type="text/css" href="{% static 'css/animate.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/font-awesome.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/fonts.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/flaticon.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/owl.carousel.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/owl.theme.default.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/dl-menu.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/nice-select.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/magnific-popup.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/venobox.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'js/plugin/rs_slider/layers.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'js/plugin/rs_slider/navigation.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'js/plugin/rs_slider/settings.css' %}" />
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/responsive.css' %}" />
+	<link rel="stylesheet" id="theme-color" type="text/css" href="seat_booking.html#"/>
+	<!-- favicon links -->
+	<link rel="shortcut icon" type="image/png" href="{% static 'images/header/favicon.ico' %}" />
+
+
+    <style>
+        {% for s in s1 %}
+        .st_seat_lay_row #c{{ forloop.counter }}[type="checkbox"] + label:before {
+	        content:"{{ forloop.counter }}";
+        }
+        {% endfor %}
+
+        {% for s in s2 %}
+        .st_seat_lay_row #c{{ forloop.counter|add:23 }}[type="checkbox"] + label:before {
+	        content:"{{ forloop.counter }}";
+        }
+        {% endfor %}
+        {% for s in s3 %}
+        .st_seat_lay_row #c{{ forloop.counter|add:46 }}[type="checkbox"] + label:before {
+	        content:"{{ forloop.counter }}";
+        }
+        {% endfor %}
+
+        {% for s in s4 %}
+        .st_seat_lay_row #c{{ forloop.counter|add:69 }}[type="checkbox"] + label:before {
+	        content:"{{ forloop.counter }}";
+        }
+        {% endfor %}
+
+    </style>
+
+
+
+</head>
+
+<body>
+
+	<!-- color picker start -->
+	<!-- st top header Start -->
+<form action="" method="post">{% csrf_token %}
+
+	<div class="st_bt_top_header_wrapper float_left">
+		<div class="container container_seat">
+			<div class="row">
+				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+					<div class="st_bt_top_back_btn st_bt_top_back_btn_seatl float_left">	<a href="movie_booking.html"><i class="fas fa-long-arrow-alt-left"></i> &nbsp;Back</a>
+					</div>
+					<div class="cc_ps_quantily_info cc_ps_quantily_info_tecket">
+						<p>Select Ticket</p>
+											<div class="select_number">
+												<button onclick="changeQty(1); return false;" class="increase"><i class="fa fa-plus"></i>
+												</button>
+												<input type="text" name="quantity" value="1" size="2" id="input-quantity" class="form-control" />
+												<button onclick="changeQty(0); return false;" class="decrease"><i class="fa fa-minus"></i>
+												</button>
+											</div>
+											<input type="hidden" name="product_id" />
+										</div>
+					</div>
+				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+					<div class="st_bt_top_center_heading st_bt_top_center_heading_seat_book_page float_left">
+						<h3>Aquaman - English - (2:47)</h3>
+						<h4>Today, 19 Dec, 10:00 PM</h4>
+					</div>
+				</div>
+				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="st_seatlay_btn float_left">	<button type="submit" class="btn btn-danger">Proceed to Pay</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- st top header Start -->
+	<!-- st seat Layout Start -->
+	<div class="st_seatlayout_main_wrapper float_left">
+		<div class="container container_seat">
+			<div class="st_seat_lay_heading float_left">
+				<h3>{{ st.talkies.name }}</h3>
+			</div>
+
+			<div class="st_seat_full_container">
+				<div class="st_seat_lay_economy_wrapper float_left">
+					<div class="screen">
+						<img src="{% static 'images/content/screen.png' %}">
+					</div>
+					<div class="st_seat_lay_economy_heading float_left">
+						<h3>Economy</h3>
+					</div>
+					<div class="st_seat_lay_row float_left">
+						<ul>
+							<li class="st_seat_heading_row">A</li>
+							{% for s in s1 %}
+							    {% if forloop.counter < 6 %}
+                                    {% if s.status == "Booked" %}
+                                        <li class="seat_disable">
+                                     {% else %}
+                                        <li>
+                                        <span>Pay &#8377; {{ s.st.Rs }}</span>
+                                        {% endif %}
+                                        <input type="checkbox" id="c{{ forloop.counter }}" value="{{ s.id }}"  name="cb" placeholder="1">
+                                        <label for="c{{ forloop.counter }}"></label>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+						</ul>
+						<ul class="st_eco_second_row">
+                                {% for s in s1 %}
+							    {% if forloop.counter > 5 and forloop.counter < 18 %}
+                                    {% if s.status == "Booked" %}
+                                        <li class="seat_disable">
+                                     {% else %}
+                                        <li>
+                                        <span>Pay &#8377; {{ s.st.Rs }}</span>
+                                        {% endif %}
+                                        <input type="checkbox" id="c{{ forloop.counter }}" value="{{ s.id }}"  name="cb" placeholder="1">
+                                        <label for="c{{ forloop.counter }}"></label>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+						</ul>
+						<ul class="st_eco_second_row">
+							{% for s in s1 %}
+							    {% if forloop.counter > 17 %}
+                                    {% if s.status == "Booked" %}
+                                        <li class="seat_disable">
+                                     {% else %}
+                                        <li>
+                                        <span>Pay &#8377; {{ s.st.Rs }}</span>
+                                        {% endif %}
+                                        <input type="checkbox" id="c{{ forloop.counter }}" name="cb" value="{{ s.id }}" placeholder="1">
+                                        <label for="c{{ forloop.counter }}"></label>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+						</ul>
+					</div>
+				</div>
+				<div class="st_seat_lay_economy_wrapper st_seat_lay_economy_wrapperexicutive float_left">
+					<div class="st_seat_lay_economy_heading float_left">
+						<h3>Executive + 3d glasss - rs 190.00</h3>
+					</div>
+					<div class="st_seat_lay_row float_left">
+						<ul>
+							<li class="st_seat_heading_row">A</li>
+							{% for s in s2 %}
+							    {% if forloop.counter < 6 %}
+                                    {% if s.status == "Booked" %}
+                                        <li class="seat_disable">
+                                     {% else %}
+                                        <li>
+                                        <span>Pay &#8377; {{ s.st.Rs }}</span>
+                                        {% endif %}
+                                        <input type="checkbox" id="c{{ forloop.counter|add:23 }}" value="{{ s.id }}"  name="cb" placeholder="1">
+                                        <label for="c{{ forloop.counter|add:23 }}"></label>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+						</ul>
+						<ul class="st_eco_second_row">
+                                {% for s in s2 %}
+							    {% if forloop.counter > 5 and forloop.counter < 18 %}
+                                    {% if s.status == "Booked" %}
+                                        <li class="seat_disable">
+                                     {% else %}
+                                        <li>
+                                        <span>Pay &#8377; {{ s.st.Rs }}</span>
+                                        {% endif %}
+                                        <input type="checkbox" id="c{{ forloop.counter|add:23 }}" value="{{ s.id }}"  name="cb" placeholder="1">
+                                        <label for="c{{ forloop.counter|add:23 }}"></label>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+						</ul>
+						<ul class="st_eco_second_row">
+							{% for s in s2 %}
+							    {% if forloop.counter > 17 %}
+                                    {% if s.status == "Booked" %}
+                                        <li class="seat_disable">
+                                     {% else %}
+                                        <li>
+                                        <span>Pay &#8377; {{ s.st.Rs }}</span>
+                                        {% endif %}
+                                        <input type="checkbox" id="c{{ forloop.counter|add:23 }}" name="cb" value="{{ s.id }}" placeholder="1">
+                                        <label for="c{{ forloop.counter|add:23 }}"></label>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+						</ul>
+					</div>
+					<div class="st_seat_lay_row float_left">
+						<ul>
+							<li class="st_seat_heading_row">A</li>
+							{% for s in s3 %}
+							    {% if forloop.counter < 6 %}
+                                    {% if s.status == "Booked" %}
+                                        <li class="seat_disable">
+                                     {% else %}
+                                        <li>
+                                        <span>Pay &#8377; {{ s.st.Rs }}</span>
+                                        {% endif %}
+                                        <input type="checkbox" id="c{{ forloop.counter|add:46 }}" value="{{ s.id }}"  name="cb" placeholder="1">
+                                        <label for="c{{ forloop.counter|add:46 }}"></label>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+						</ul>
+						<ul class="st_eco_second_row">
+                                {% for s in s3 %}
+							    {% if forloop.counter > 5 and forloop.counter < 18 %}
+                                    {% if s.status == "Booked" %}
+                                        <li class="seat_disable">
+                                     {% else %}
+                                        <li>
+                                        <span>Pay &#8377; {{ s.st.Rs }}</span>
+                                        {% endif %}
+                                        <input type="checkbox" id="c{{ forloop.counter|add:46 }}" value="{{ s.id }}"  name="cb" placeholder="1">
+                                        <label for="c{{ forloop.counter|add:46 }}"></label>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+						</ul>
+						<ul class="st_eco_second_row">
+							{% for s in s3 %}
+							    {% if forloop.counter > 17 %}
+                                    {% if s.status == "Booked" %}
+                                        <li class="seat_disable">
+                                     {% else %}
+                                        <li>
+                                        <span>Pay &#8377; {{ s.st.Rs }}</span>
+                                        {% endif %}
+                                        <input type="checkbox" id="c{{ forloop.counter|add:46 }}" name="cb" value="{{ s.id }}" placeholder="1">
+                                        <label for="c{{ forloop.counter|add:46 }}"></label>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+						</ul>
+					</div>
+					<div class="st_seat_lay_row float_left">
+						<ul>
+							<li class="st_seat_heading_row">A</li>
+							{% for s in s4 %}
+							    {% if forloop.counter < 6 %}
+                                    {% if s.status == "Booked" %}
+                                        <li class="seat_disable">
+                                     {% else %}
+                                        <li>
+                                        <span>Pay &#8377; {{ s.st.Rs }}</span>
+                                        {% endif %}
+                                        <input type="checkbox" id="c{{ forloop.counter|add:69 }}" name="cb" placeholder="1">
+                                        <label for="c{{ forloop.counter|add:69 }}"></label>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+						</ul>
+						<ul class="st_eco_second_row">
+                                {% for s in s4 %}
+							    {% if forloop.counter > 5 and forloop.counter < 18 %}
+                                    {% if s.status == "Booked" %}
+                                        <li class="seat_disable">
+                                     {% else %}
+                                        <li>
+                                        <span>Pay &#8377; {{ s.st.Rs }}</span>
+                                        {% endif %}
+                                        <input type="checkbox" id="c{{ forloop.counter|add:69 }}" name="cb" placeholder="1">
+                                        <label for="c{{ forloop.counter|add:69 }}"></label>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+						</ul>
+						<ul class="st_eco_second_row">
+							{% for s in s4 %}
+							    {% if forloop.counter > 17 %}
+                                    {% if s.status == "Booked" %}
+                                        <li class="seat_disable">
+                                     {% else %}
+                                        <li>
+                                        <span>Pay &#8377; {{ s.st.Rs }}</span>
+                                        {% endif %}
+                                        <input type="checkbox" id="c{{ forloop.counter|add:69 }}" name="cb" value="{{ s.id }}" placeholder="1">
+                                        <label for="c{{ forloop.counter|add:69 }}"></label>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- st seat Layout End -->
+</form>
+
+
+	<!--main js file start-->
+	<script src="{% static 'js/jquery_min.js' %}"></script>
+	<script src="{% static 'js/modernizr.js' %}"></script>
+	<script src="{% static 'js/bootstrap.js' %}"></script>
+	<script src="{% static 'js/owl.carousel.js' %}"></script>
+	<script src="{% static 'js/jquery.dlmenu.js' %}"></script>
+	<script src="{% static 'js/jquery.sticky.js' %}"></script>
+	<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+	<script src="{% static 'js/jquery.magnific-popup.js' %}"></script>
+	<script src="{% static 'js/jquery.bxslider.min.js' %}"></script>
+	<script src="{% static 'js/venobox.min.js' %}"></script>
+	<script src="{% static 'js/smothscroll_part1.js' %}"></script>
+	<script src="{% static 'js/smothscroll_part2.js' %}"></script>
+	<script src="{% static 'js/plugin/rs_slider/jquery.themepunch.revolution.min.js' %}"></script>
+	<script src="{% static 'js/plugin/rs_slider/jquery.themepunch.tools.min.js' %}"></script>
+	<script src="{% static 'js/plugin/rs_slider/revolution.addon.snow.min.js' %}"></script>
+	<script src="{% static 'js/plugin/rs_slider/revolution.extension.actions.min.js' %}"></script>
+	<script src="{% static 'js/plugin/rs_slider/revolution.extension.carousel.min.js' %}"></script>
+	<script src="{% static 'js/plugin/rs_slider/revolution.extension.kenburn.min.js' %}"></script>
+	<script src="{% static 'js/plugin/rs_slider/revolution.extension.layeranimation.min.js' %}"></script>
+	<script src="{% static 'js/plugin/rs_slider/revolution.extension.migration.min.js' %}"></script>
+	<script src="{% static 'js/plugin/rs_slider/revolution.extension.navigation.min.js' %}"></script>
+	<script src="{% static 'js/plugin/rs_slider/revolution.extension.parallax.min.js' %}"></script>
+	<script src="{% static 'js/plugin/rs_slider/revolution.extension.slideanims.min.js' %}"></script>
+	<script src="{% static 'js/plugin/rs_slider/revolution.extension.video.min.js' %}"></script>
+	<script src="{% static 'js/custom.js' %}"></script>
+	<!--main js file end-->
+	<script>
+		//* Isotope js
+		    function protfolioIsotope(){
+		        if ( $('.st_fb_filter_left_box_wrapper').length ){
+		            // Activate isotope in container
+		            $(".protfoli_inner, .portfoli_inner").imagesLoaded( function() {
+		                $(".protfoli_inner, .portfoli_inner").isotope({
+		                    layoutMode: 'masonry',
+		                });
+		            });
+
+		            // Add isotope click function
+		            $(".protfoli_filter li").on('click',function(){
+		                $(".protfoli_filter li").removeClass("active");
+		                $(this).addClass("active");
+		                var selector = $(this).attr("data-filter");
+		                $(".protfoli_inner, .portfoli_inner").isotope({
+		                    filter: selector,
+		                    animationOptions: {
+		                        duration: 450,
+		                        easing: "linear",
+		                        queue: false,
+		                    }
+		                });
+		                return false;
+		            });
+		        };
+		    };
+		 protfolioIsotope ();
+
+		  function changeQty(increase) {
+				            var qty = parseInt($('.select_number').find("input").val());
+				            if (!isNaN(qty)) {
+				                qty = increase ? qty + 1 : (qty > 1 ? qty - 1 : 1);
+				                $('.select_number').find("input").val(qty);
+				            } else {
+				                $('.select_number').find("input").val(1);
+				            }
+				        }
+	</script>
+</body>
+
+</html>

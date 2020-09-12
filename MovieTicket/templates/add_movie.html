@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+    <center>
+        <h1 style="padding-top: 15%;">Add New Movie</h1><br>
+        <form action="" method="post" enctype="multipart/form-data" style="width: 40%">
+            {% csrf_token %}
+            <select name="cat" required>
+                <option value="">-------- Choose Category --------- </option>
+                {% for cat in cats %}
+                <option value="{{ cat.id }}">{{ cat.name }}</option>
+
+                {% endfor %}
+
+            </select>
+            <br><br> <br><br>
+
+            <label>Movie Title</label>
+            {{ form.title }}<br>
+            <label>Movie image</label>
+            {{ form.img1 }}<br>
+            <label>Movie release Date</label>
+            {{ form.r_date }}<br>
+            <label>Movie Director</label>
+            {{ form.director }}<br>
+            <label>Movie Rate</label>
+            {{ form.rate }}<br>
+            <label>Movie Production House</label>
+            {{ form.pro_house }}<br>
+            <label>Movie Despcription</label>
+            {{ form.des }}<br>
+            <input type="submit" class="btn btn-info" value="Add Movie">
+        </form>
+    <br><br>
+         </center>
+{% endblock %}
